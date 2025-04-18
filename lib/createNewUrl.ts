@@ -30,25 +30,3 @@ export default async function createNewUrl(
 
 }
 
-
-
-// const collection = await getCollection(COLLECTION);
-// const exist = await collection.findOne({alias});
-// if (exist) {
-//     throw new Error("alias already in use");
-// }
-
-// const checkUrl = await fetch(longUrl)
-// if (!checkUrl.ok) {
-//     throw new Error("Invalid url")
-// }
-
-// const data = {
-//     longUrl: longUrl,
-//     alias: alias,
-// }
-// const result = await collection.insertOne(data);
-// if (!result.acknowledged) {
-//     throw new Error("DB insert failed");
-// }
-// return { alias };
