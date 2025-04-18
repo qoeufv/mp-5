@@ -1,20 +1,18 @@
-import { redirect } from "next/navigation";
-import getCollection, {COLLECTION} from "@/db";
+import { redirect } from 'next/navigation'
+import getCollection, { COLLECTION } from '@/db'
 
-interface PageProps {
+export default async function Page({
+                                       params: { alias }
+                                   }: {
     params: { alias: string }
-}
-
-export default async function Page({ params }: PageProps) {
-    const { alias } = params
-    const collection = await getCollection(COLLECTION)
-    const doc = await collection.findOne<{ longUrl: string }>({ alias })
+}) {
+    const coll = await getCollection(COLLECTION)
+    const doc  = await coll.findOne<{ longUrl: string }>({ alias })
     if (!doc) {
         redirect('/')
     }
     redirect(doc.longUrl)
 }
-
 
 
 
