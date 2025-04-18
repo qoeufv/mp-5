@@ -2,12 +2,11 @@ import { redirect } from 'next/navigation'
 import getCollection, { COLLECTION } from '@/db'
 
 export default async function Page({
-                                       params,
+                                       params
                                    }: {
-    params: { alias: string }
-    searchParams?: { [key: string]: string | string[] | undefined }
+    params: Promise<{ alias: string }>;
 }) {
-    const { alias } = params
+    const {alias} = await params
     const coll = await getCollection(COLLECTION)
     const doc  = await coll.findOne<{ longUrl: string }>({ alias })
 
