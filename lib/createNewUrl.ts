@@ -4,7 +4,7 @@ import getCollection, { COLLECTION } from "@/db";
 export default async function createNewUrl(
     longUrl: string,
     alias: string
-) {
+): Promise<{alias: string}> {
     console.log("creating short url...");
     const coll = await getCollection(COLLECTION);
     const exists = await coll.findOne({ alias });
